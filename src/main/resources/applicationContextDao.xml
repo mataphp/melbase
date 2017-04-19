@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<import resource="applicationContextInterceptor.xml" />
+	<import resource="spring-jpa.xml" />
+
+	<bean id="abstractDaoTarget" class="fr.aphp.sls.melbase.dao.impl.GenericDaoJpaImpl"
+		abstract="true">
+		<property name="entityManagerFactory">
+			<ref bean="entityManagerFactory" />
+		</property>
+	</bean>
+	
+	<bean id="socDao" parent="abstractDao">
+		<property name="proxyInterfaces">
+			<value>fr.aphp.sls.melbase.dao.ctcae.SocDao
+			</value>
+		</property>
+		<property name="target">
+			<bean parent="abstractDaoTarget">
+				<constructor-arg>
+					<value>fr.aphp.sls.melbase.model.ctcae.Soc
+					</value>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="termDao" parent="abstractDao">
+		<property name="proxyInterfaces">
+			<value>fr.aphp.sls.melbase.dao.ctcae.TermDao
+			</value>
+		</property>
+		<property name="target">
+			<bean parent="abstractDaoTarget">
+				<constructor-arg>
+					<value>fr.aphp.sls.melbase.model.ctcae.Term
+					</value>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="cimDao" parent="abstractDao">
+		<property name="proxyInterfaces">
+			<value>fr.aphp.sls.melbase.dao.cim.CimDao
+			</value>
+		</property>
+		<property name="target">
+			<bean parent="abstractDaoTarget">
+				<constructor-arg>
+					<value>fr.aphp.sls.melbase.model.cim.Cim
+					</value>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
+	
+
+</beans>

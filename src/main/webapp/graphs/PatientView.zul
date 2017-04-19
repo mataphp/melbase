@@ -1,0 +1,22 @@
+<?page title="Patient View" contentType="text/html;charset=UTF-8"?>
+<!--  <?script type="text/javascript"  src="http://code.highcharts.com/highcharts.js" ?>  -->
+<!--  <?script type="text/javascript"  src="http://code.highcharts.com/modules/data.js" ?>  -->
+<!-- <?script type="text/javascript"  src="http://code.highcharts.com/modules/exporting.js" ?>  -->
+
+<?script type="text/javascript"  src="/js/highcharts.js" ?>
+<?script type="text/javascript"  src="/js/data.js" ?>
+<?script type="text/javascript"  src="/js/exporting.js" ?>
+
+<zk>
+
+<script src="/js/gantt.js" defer="true" />
+
+<window title="Patient View" border="normal" xmlns:h="xhtml" vflex="1"
+	apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('fr.aphp.sls.melbase.view.graphs.PatientViewVM')" >
+	<combobox value="@bind(vm.inclusion)" autodrop="true" autocomplete="true" buttonVisible="false" onOK="@command('graph')"
+		model="@bind(vm.availSubjectIds)" />
+	<button onClick="@command('graph')" label="go" />
+	
+	<div id="container" vflex="1" style="border: 1px solid" />
+</window>
+</zk>

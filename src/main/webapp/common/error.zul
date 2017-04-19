@@ -1,0 +1,16 @@
+<?page title="MelBase Erreur" contentType="text/html;charset=UTF-8"?>
+<?link rel="shortcut icon" type="image/x-icon" href="/images/layout/melbasef.ico" ?>
+<zk>
+	<style src="/css/layout.css.dsp"/>
+	<vbox align="center" hflex="1" width="100%" style="margin-top: 50px">
+		<div  height="20px" width="600px" sclass="top" />
+		<div height="400px" width="600px" sclass="error">
+			<html>
+						<p>Une erreur est survenue</p>
+						<p>Vous n'êtes pas authorisé(e) à accéder à ce contenu</p>
+						<p>Fermez la fenêtre et contacter les administrateurs du portail.</p>
+			</html>	
+		</div>
+		<div height="45px" width="600px" sclass="down" />
+	</vbox>
+</zk>

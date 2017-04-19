@@ -1,0 +1,186 @@
+<?page title="MelBase" contentType="text/html;charset=UTF-8"?>
+<?link rel="shortcut icon" type="image/x-icon" href="/images/layout/melbasef.ico" ?>
+
+<?meta content="text/html; charset=UTF-8" 	pageEncoding="UTF-8"?>
+
+<?meta name="description" content="Melbase BCB APHP. Base de données clinico-biologiques sur les melanomes. Portail de recueil de données cliniques et biologiques sur les données de melanomes de stades III inopérables et IV" ?>
+
+<?meta name="keywords" content="melanome, melanoma, BCB, melbase" ?>
+
+<zk>
+	<style src="/css/layout.css.dsp"/>
+	<style src="/css/tap.css.dsp"/>
+	<?script src="/js/ie8failure.js" ?>
+	<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+	
+	<html><![CDATA[
+     	<script type="text/javascript">  	
+       		var postDirect = function() {
+		    	window.zAu.send(new window.zk.Event(window.zk.Widget.$('$win'),'onSuccess', window.document.domain));   	
+		    }	    
+		</script> 
+	]]>	
+</html>
+	
+	<div apply="fr.aphp.sls.melbase.view.MainPortal" 
+		id="win" height="100%" >
+		<borderlayout sclass="complex-layout">
+			<north border="none">
+				<vlayout style="margin: 5px 0 0 0">
+					<hbox pack="stretch" width="100%" hflex="1" align="end" sclass="top">
+						<hbox pack="start" style="float:left;">
+							<div sclass="banner" height="80px" width="320px"></div>
+	            		</hbox>
+	            		<hbox id="logoutDiv" pack="end" width="60px" 
+		            			style="float:right; margin-right: 20px" hflex="min">
+		            		<div sclass="logout">
+			            		<hlayout sclass="z-valign-middle">
+									<image src="images/layout/exit_grey.png" width="30px" height="30px" />
+									<label value="Deconnexion" sclass="appLabel" />
+								</hlayout>
+							</div>
+						</hbox>
+            		</hbox>
+            		<!-- <div sclass="subheader" align="right"> -->
+					<!-- 	<label sclass="demo-search-inp" /> -->
+					<!-- </div>   -->  		
+	            </vlayout>	
+			</north>
+			<!-- Content -->
+			<center border="none" style="margin-top: 10px; padding-right: 20px; padding-left: 20px">
+				<borderlayout sclass="complex-layout">
+					<north id="north" style="margin-top: 5px" height="200px" border="none" collapsible="false" visible="false">
+						
+						<vlayout sclass="z-valign-middle">
+					
+							<groupbox id="appsGroup" mold="default" sclass="groupBoxTk2" closable="false">
+								<caption label="Applications" sclass="groupBoxHeader" />
+									<hbox id="apps" pack="center" hflex="1" visible="false">
+										<hlayout spacing="10px" sclass="z-valign-middle" hflex="min">
+											<box width="100%" sclass="appSide" style="float:left;" height="40px"/>
+											<div id="inclusionLink" sclass="appLink">
+												<hlayout spacing="10px" sclass="z-valign-middle">
+													<image src="images/personal.png" width="40px" height="40px" />
+													<vlayout spacing="0px">
+														<label value="Inclusion" sclass="appLabel" />
+														<label value="Inclure un patient au projet" sclass="appSousTitre" />
+													</vlayout>
+												</hlayout>
+											</div>
+											<div id="clinicaLink" sclass="appLink">
+												<hlayout spacing="10px" sclass="z-valign-middle">
+													<image src="images/Akazalogo.gif" width="40px" height="40px"/>
+													<vlayout spacing="0px">
+														<label value="OpenClinica®" sclass="appLabel" />
+														<label value="Renseigner les données cliniques dans OpenClinica" sclass="appSousTitre" />
+													</vlayout>
+												</hlayout>
+											</div>
+											<div id="tumorotekLink" sclass="appLink">
+												<hlayout spacing="10px" sclass="z-valign-middle">
+													<image src="images/logo-tk.png" width="40px" height="40px" />
+													<vlayout spacing="0px">
+														<label value="TumoroteK®" sclass="appLabel" />
+														<label value="Renseigner les données biologiques dans TumoroteK" sclass="appSousTitre" />
+													</vlayout>
+												</hlayout>
+											</div>
+											<div id="rechercheLink" sclass="appLink" onClick='Executions.getCurrent().sendRedirect("/graphs/PatientView.zul","_new");'>
+												<hlayout spacing="10px" sclass="z-valign-middle">
+													<image src="images/view.png" width="40px" height="40px" />
+													<vlayout spacing="0px">
+														<label value="Recherches" sclass="appLabel" />
+														<label value="Utiliser les outils de recherche" sclass="appSousTitre" />
+													</vlayout>
+												</hlayout>
+											</div>
+											<box width="100%" sclass="appSide" style="float:left;" height="40px"/>
+										</hlayout>
+									</hbox>
+							</groupbox>
+							<groupbox sclass="groupBoxTk2" closable="true" mold="3d">
+								<attribute name="onOpen">
+									<![CDATA[arrow.setSclass("open-" + self.isOpen());
+									]]>
+								</attribute>
+								<caption>
+                    				<div id="arrow" class="open-true">Informations de connection</div>
+                				</caption>
+								<iframe id="userInfoFrame" hflex="1" height="50px"
+		    							style="border: 1px; border-color: #214584" />
+							</groupbox>
+							</vlayout>
+						
+					</north>
+					<center  border="none" style="margin-top: 10px">
+						<groupbox sclass="groupBoxTk" height="98%" closable="false">
+							<!-- <caption label="Contenu public" sclass="groupBoxHeader" /> -->
+								<html>
+									<h3>Présentation</h3>
+									<p>
+										L’arsenal thérapeutique du mélanome métastatique s’est récemment enrichi de thérapies ciblées 
+										et d’immunothérapies efficaces permettant d’envisager un traitement personnalisé s’appuyant 
+										sur des plateformes de génotypage labellisées.
+									</p>
+									<p>	
+										Afin de mieux évaluer la prévalence des différents genotypes de mélanome, 
+										les rapports bénéfices risques et le coût médicoéconomique de ces nouveaux traitements 
+										et d’en comprendre les mécanismes de résistance primaires et secondaires , 
+										nous souhaitons mettre en place un suivi clinique et biologique de 
+										l’ensemble des patients souffrant de mélanome métastatique stades IV et stades III inopérables 
+										pris en charge en France par des centres ayant un recrutement et une expertise suffisante 
+										dans le domaine et un centre de ressource biologique.
+									</p>
+									<p>
+										La constitution d'une base de données cliniques sera réalisée conjointement à la constitution 
+										d'une tumorothèque virtuelle. Une interface conviviale sera développée afin de permettre 
+										aux différents partenaires de consulter et alimenter la base de données à distance par internet. 
+										La solution informatique assurera donc les rôles d'entrepot de données pour la génération 
+										d'analyses et de rapports, de registre de données cliniques et celui d'un catalogue virtuel 
+										de matériel biologique.
+									</p>
+		    					</html>
+		    			</groupbox>
+					</center>
+					<east id="login" border="none" size="400px" style="margin-top: 10px">
+						<vlayout sclass="z-valign-middle">
+							<groupbox sclass="groupBoxTk2" closable="false" height="300px">
+								<caption id="caption" label="Connexion sécurisée" sclass="groupBoxHeader" />
+								<iframe id="iframe" width="100%" height="280px"
+									src="https://localhost:8443/cas/login"
+	    							style="border: 1px; border-color: #214584" />
+							</groupbox>
+							<groupbox sclass="groupBoxTk2" closable="false">
+								<caption label="Promoteurs" sclass="groupBoxHeader" />
+								<iframe id="partenaires" width="100%" height="400px"
+									src="/common/partenaires.html"
+	    							style="border: none; border-color: #214584" />
+								<!-- <vbox width="400px" align="center"> -->
+								<!--	<image src="/images/layout/inca2.jpg" width="200px" height="105"/> -->
+								<!--	<image src="/images/layout/aphp.jpg" /> -->
+								<!-- </vbox> -->
+							</groupbox>
+						</vlayout>
+					</east>
+				</borderlayout>
+			</center>
+			<south size="60px" border="0">
+				<hbox pack="stretch" width="100%" hflex="1" align="end" sclass="down">
+					<toolbar mold="panel" align="center">
+						<html>
+							<![CDATA[
+							<a class="barLink" href="https://melbase.aphp.fr/inclusion/contact/sendmailtoadmin" target="_blank">Contact</a>
+						]]></html>
+						<separator orient="vertical" bar="true" />
+						<label value="Mentions légales" sclass="barLink" />
+						<separator orient="vertical" bar="true" />
+							Assistance Publique des Hôpitaux de Paris - 2012
+					</toolbar>
+					<hbox pack="end" style="float:right" hflex="1">
+						<div sclass="downcorner" height="45px" width="160px" />
+            		</hbox>
+            	</hbox>
+			</south>
+		</borderlayout>
+	</div>
+</zk>

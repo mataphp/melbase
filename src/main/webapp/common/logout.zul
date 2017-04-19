@@ -1,0 +1,43 @@
+<?page title="Logout" contentType="text/html;charset=UTF-8"?>
+<?link rel="shortcut icon" type="image/x-icon" href="/images/layout/melbasef.ico" ?>
+<zk>
+	<style src="/css/tap.css.dsp"/>
+	<style src="/css/layout.css.dsp"/>
+	<div apply="fr.aphp.sls.melbase.view.Logout" width="100%" style="background: #fff">
+
+	<vbox align="center" hflex="1" width="100%" style="background: #fff">
+	
+			<hbox pack="stretch" width="100%" hflex="1" align="end" sclass="top">
+						<hbox pack="start" style="float:left;">
+							<div sclass="banner" height="80px" width="320px"></div>
+	            		</hbox>
+            		</hbox>
+	
+		<!-- <div height="20px" width="600px" sclass="top" /> -->
+		<div height="200px" width="400px" sclass="error">
+			<vlayout>
+				<label style="font-size: 15px; font-weight: bold" value="Vous êtes déconnecté de l'application mais une session Single-Sign-On est probablement encore active." />
+				<label value="Voulez-vous vous déconnecter du portail?" />
+				<div id="logoutBtn" sclass="logout" width="200px">
+			            		<hlayout sclass="z-valign-middle">
+									<image src="../images/layout/exit_grey.png" width="30px" height="30px" />
+									<label value="Deconnexion" sclass="appLabel" />
+								</hlayout>
+							</div>
+			</vlayout>
+		</div>
+		<hbox pack="stretch" width="100%" hflex="1" align="end" sclass="down">
+					<toolbar mold="panel" align="center">
+						<label value="Contact" sclass="barLink" />
+						<separator orient="vertical" bar="true" />
+						<label value="Mentions légales" sclass="barLink" />
+						<separator orient="vertical" bar="true" />
+							Assistance Publique des Hôpitaux de Paris - 2012
+					</toolbar>
+					<hbox pack="end" style="float:right" hflex="1">
+						<div sclass="downcorner" height="45px" width="160px" />
+            		</hbox>
+            	</hbox>
+	</vbox>
+	</div>
+</zk>
